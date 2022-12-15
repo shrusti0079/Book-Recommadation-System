@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        ul.navbar a {
+            margin: 0px 6px;
+        }
+
+        ul.navbar a:hover {
+            background-color: powderblue;
+            font-weight: bolder;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .margin-top-20 {
+            margin-top: 20px;
+        }
+
+        h3 {
+            margin: 1%;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        p{
+            margin: 0%;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        body{
+            margin-bottom: 5%;
+        }
+        .container h1{
+            color: rgb(2, 58, 144);
+        }
+
+        .mycard h3, p{
+            color: rgb(16, 3, 90);
+            color: rgb(0, 124, 133);
+            /* color: rgb(215, 0, 108); */
+            color:darkslategrey;
+        }
+        ul.nav a:hover
+        {
+            font-weight: bolder;
+            background-color: rgb(70, 130, 130);
+            text-shadow: aliceblue;
+        } 
+        ul.nav a:active
+        {
+            font-weight: bolder;
+            color: aqua;
+            background-color: rgb(70, 130, 130);
+            text-shadow: aliceblue;
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color:grey;">
+    <nav class="navbar" style="background-color:darkslategrey;">
+        <ul class="nav navbar">
+            <a class="navbar-brand text-white">My book Recommender</a>
+            <a class="navbar-brand text-white" href='/'>Home</a>
+            <a class="navbar-brand text-white" href='/rt'>Recommender</a>
+            <a class="navbar-brand text-white" >Contact</a>
+        </ul>
+    </nav>
+
+    <div class="container margin-top-20">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white">Recommend Books</h1>
+
+            </div>
+
+            <form action="/rt_books" method="post">
+                <input name="user_input" type="text" class="form-control"><br>
+                <input type="submit" class="btn btn-lg btn-warning">
+            </form>
+
+
+            {% if data %}
+                {% for i in data %}
+                <div class="col-md-3" style="margin-top: 45px;">
+                    <div>
+                        <!-- In recommendation we don't need to show rating s and votes, ony display bookimage name and autohr name. -->
+                        <div class="card-body">
+                            <img class="card-top" src="{{i[2]}}">
+                            <h3>{{i[0]}}</h3>
+                            <!-- author name -->
+                            <p>{{i[1]}}</p>               
+                            <!-- i doubt if Math.round will work, beyter to apply this in the  -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+            
+            
+        </div>
+    </div>
+</body>
+
+</html>

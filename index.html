@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        ul.navbar a {
+            margin: 0px 6px;
+        }
+
+        ul.navbar a:hover {
+            background-color: powderblue;
+            font-weight: bolder;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .margin-top-20 {
+            margin-top: 20px;
+        }
+
+        h3 {
+            margin: 1%;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        p{
+            margin: 0%;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        body{
+            margin-bottom: 5%;
+        }
+        .container h1{
+            color: rgb(2, 58, 144);
+        }
+
+        .mycard h3, p{
+            color: rgb(16, 3, 90);
+            color: rgb(0, 124, 133);
+            /* color: rgb(215, 0, 108); */
+            color:darkslategrey;
+        }
+        ul.nav a:hover
+        {
+            font-weight: bolder;
+            background-color: rgb(70, 130, 130);
+            text-shadow: aliceblue;
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color:white;">
+    <nav class="navbar" style="background-color:darkslategrey;">
+        <ul class="nav navbar">
+            <a class="navbar-brand text-white">My book Recommender</a>
+            <a class="navbar-brand text-white" href='/'>Home</a>
+            <a class="navbar-brand text-white" href='/rt'>Recommender</a>
+            <a class="navbar-brand text-white" >Contact</a>
+        </ul>
+    </nav>
+
+    <div class="container margin-top-20">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text">Top 50 Books</h1>
+
+            </div>
+                
+            {%for i in range (book_name|length) %}
+            <div class="mycard col-md-3" style="margin-top: 45px;">
+                <div>
+                    <div class="card-body">
+                        <img class="card-top" src="{{image[i]}}">
+                        <h3>{{book_name[i]}}</h3>
+                        <!-- author name -->
+                        <p>{{author[i]}}
+                        </p>
+                        <p>Votes: {{votes[i]}}</p>
+                        <p>Ratings: {{rating[i]}}</p>                      
+                        <!-- i doubt if Math.round will work, beyter to apply this in the  -->
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+
+
+
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- 
+
+    1. changed title
+    2. link bootstrap
+    3. created a navbar: added a bootstrap class"navbar-brand". Also put the heading in p tag . added background color in navbar and in the body.
+    4. After this we are importing render template in the app.py
+    5. we added home, recommender and contact in the navabar and turned everyone into a tag to get them inline aslo added some margin cause things weren't going that well.
+    6. added hover
+    7. going for top 50 books display. Starting with div.container added heading inside col-12 class
+    8. creating card 4 in one row, hence using col-md-3 to display books
+
+    9. we have a 'popular_df' data in the model which we have to show here. For this we will export this data 'popular_df' to pycharm i guess me here will be doing it in jupyter notebook idk, let's see. Actually pabo!, since we are writing code in vscode hence we will be ofcourse exporting data here!
+
+    10. NOtes in book 
+ -->
